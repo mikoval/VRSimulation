@@ -120,6 +120,9 @@ function animationLoop(){
 
 
 	if(effect){
+		controls.resetSensor(); //zero rotation
+
+    	effect.setFullScreen(true) //fullscreen
 		controls.update();
 		effect.render(scene, camera);
 	}
