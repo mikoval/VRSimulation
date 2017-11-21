@@ -1,14 +1,14 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(9000);
 
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
 
-var server = app.listen(8081, function() {
+var server = app.listen(8080, function() {
 	var host = server.address().address
 	var port = server.address().port
 
@@ -16,7 +16,9 @@ var server = app.listen(8081, function() {
 })
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  socket.on('testMessage', function(msg){
+    console.log('message: ' + msg);
+  });
 });
 
 
