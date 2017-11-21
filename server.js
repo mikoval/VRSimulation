@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 io.on('connection', function(socket){
   socket.on('testMessage', function(msg){
-    socket.broadcast.volatile.emit("testMessage", msg);
+    socket.broadcast.emit("testMessage", msg);
   });
 });
 
