@@ -18,6 +18,11 @@ $(document).ready(function(){
 
 
 
-$(docuemnt).on("click", function(){
+$(document).on("click", function(){
+	console.log("going full screen")
+	document.documentElement.webkitRequestFullScreen()
+})
+$(document).on("tap", function(){
+	console.log("going full screen")
 	document.documentElement.webkitRequestFullScreen()
 })
