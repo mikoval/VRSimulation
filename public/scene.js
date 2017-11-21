@@ -69,8 +69,8 @@ function initScene(){
 	scene.add( light );
 
 	
-	console.log(window.location.hostname + ":9000");
-	socket =  io(window.location.hostname + ":9000");
+	console.log(window.location.host);
+	socket =  io(window.location.host);
 
 	if(!mobile){
 		controls = new THREE.PointerLockControls( camera );
