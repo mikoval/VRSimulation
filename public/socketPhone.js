@@ -10,6 +10,7 @@ $(document).ready(function(){
 		var time = data.t;
 	
 		if(time > lastTime){
+			/*
 			camera.position.x  = data.p.x;
 			camera.position.y  = data.p.y;
 			camera.position.z  = data.p.z;
@@ -17,12 +18,13 @@ $(document).ready(function(){
 			camera.quaternion._y = data.q._y;
 			camera.quaternion._z = data.q._z;
 			camera.quaternion._w = data.q._w;
+			*/
 			prevTime = time;
 		}
 		
 	});
 	controls = new DeviceOrientationController( camera, renderer.domElement );
-	controls.connect();
+	//controls.connect();
 })
 
 
