@@ -36,9 +36,11 @@ function initScene(){
 	// Start the renderer.
 	renderer.setSize(WIDTH, HEIGHT);
 
+
 	document.body.appendChild( renderer.domElement );
 	var element = renderer.domElement;
-	
+	element.style.width = "100%";
+	element.style.height = "100%";
 
 	var rng = CustomRandom(23);
 	for(var i = 0; i < 100; i++){
