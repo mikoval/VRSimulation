@@ -18,3 +18,6 @@ $(document).ready(function(){
 
 
 
+$(docuemnt).on("click", function(){
+	document.documentElement.webkitRequestFullScreen()
+})
