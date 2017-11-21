@@ -1,7 +1,7 @@
 
 function socketLoop(){
 	var obj = {};
-	obj.p = camera.position;
-	socket.emit('testMessage', "hi from computer");
+	obj.p =  controls.getObject().position;
+	socket.emit('testMessage',obj);
 	setTimeout(socketLoop, 30);
 }

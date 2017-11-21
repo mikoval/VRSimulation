@@ -65,6 +65,7 @@ function initScene(){
 
 	controls = new THREE.PointerLockControls( camera );
 	controls.enabled = true;
+	controls.getObject()
 	scene.add( controls.getObject() );
 
 	socketLoop();
@@ -79,6 +80,7 @@ function render(){
 }
 
 function animationLoop(){
+
 
 	var time = performance.now();
 	var delta = ( time - prevTime ) / 1000;
