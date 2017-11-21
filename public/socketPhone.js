@@ -3,11 +3,13 @@ function socketLoop(){
 	 socket.emit('testMessage', "hi");
 	// setTimeout(socketLoop, 30);
 }
-var prevTime = 0;
+
 $(document).ready(function(){
+	lastTime = 0;
 	socket.on('testMessage', function(data){
 		var time = data.t;
-		if(time > prevTime){
+	
+		if(time > lastTime){
 			camera.position.x  = data.p.x;
 			camera.position.y  = data.p.y;
 			camera.position.z  = data.p.z;
