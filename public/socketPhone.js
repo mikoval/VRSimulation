@@ -3,15 +3,21 @@ function socketLoop(){
 	 socket.emit('testMessage', "hi");
 	// setTimeout(socketLoop, 30);
 }
+var prevTime = 0;
 $(document).ready(function(){
 	socket.on('testMessage', function(data){
-		camera.position.x  = data.p.x;
-		camera.position.y  = data.p.y;
-		camera.position.z  = data.p.z;
-		camera.quaternion._x = data.q._x;
-		camera.quaternion._y = data.q._y;
-		camera.quaternion._z = data.q._z;
-		camera.quaternion._w = data.q._w;
+		var time = data.t;
+		if(time > prevTime){
+			camera.position.x  = data.p.x;
+			camera.position.y  = data.p.y;
+			camera.position.z  = data.p.z;
+			camera.quaternion._x = data.q._x;
+			camera.quaternion._y = data.q._y;
+			camera.quaternion._z = data.q._z;
+			camera.quaternion._w = data.q._w;
+			prevTime = time;
+		}
+		
 	});
 
 })
@@ -25,4 +31,5 @@ $(document).on("click", function(){
 $(document).on("tap", function(){
 	console.log("going full screen")
 	document.documentElement.webkitRequestFullScreen()
+	renderer.width
 })
