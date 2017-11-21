@@ -17,11 +17,14 @@ var server = app.listen(8080, function() {
 
 io.on('connection', function(socket){
   socket.on('testMessage', function(msg){
-    console.log('message: ' + msg);
+    socket.broadcast.emit("testMessage", msg);
   });
 });
 
 
 app.get('/', function (req, res) {
 	res.render('main.ejs', {})
+})
+app.get('/phone', function (req, res) {
+	res.render('phone.ejs', {})
 })
