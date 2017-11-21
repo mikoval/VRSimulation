@@ -49,16 +49,16 @@ function initScene(){
 	element.style.height = "100%";
 
 	var rng = CustomRandom(23);
-	for(var i = 0; i < 100; i++){
+	for(var i = 0; i < 1000; i++){
 		var sphereMat = new THREE.MeshPhongMaterial({color:rng.next() * 0xffffff});
-		var SphereGeo = new THREE.SphereGeometry(10, 16,16);
+		var SphereGeo = new THREE.SphereGeometry(3, 16,16);
 		var sphere = new THREE.Mesh(SphereGeo, sphereMat);
 		sphere.position.x = (rng.next()  - 0.5 )* -1000;
-		sphere.position.y = (rng.next()  ) * 100 + 6;
+		sphere.position.y = (rng.next()  ) * 200 + 6;
 		sphere.position.z =(rng.next()  - 0.5 ) * 1000;
 		//shading for spheres
 		sphere.castShadow = true;
-		sphere.receiveShadow = true;
+		//sphere.receiveShadow = true;
 		scene.add(sphere);
 	}
 
@@ -72,7 +72,7 @@ function initScene(){
 
 	
 	// mess around with this point light, play with spheres and play with plane 
-	var light = new THREE.PointLight(0xffffff, 1.0, 0);
+	var light = new THREE.PointLight(0xffffff, 1.0, 0, 2);
 	light.position.set( 100, 200, -100 );
 	light.castShadow = true;
 
@@ -140,10 +140,7 @@ function animationLoop(){
 
 
 	if(effect){
-		//controls.resetSensor(); //zero rotation
-
-    	//effect.setFullScreen(true) //fullscreen
-		//controls.update();
+		//console.log(controls);
 		effect.render(scene, camera);
 	}
 	else{
