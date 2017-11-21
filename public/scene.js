@@ -82,7 +82,8 @@ function initScene(){
 		
 	}
 	else{
-		controls = new THREE.VRControls( camera );
+		effect= new THREE.StereoEffect(renderer);
+	
 	}
 	
 
@@ -123,7 +124,7 @@ function animationLoop(){
 		//controls.resetSensor(); //zero rotation
 
     	//effect.setFullScreen(true) //fullscreen
-		controls.update();
+		//controls.update();
 		effect.render(scene, camera);
 	}
 	else{
