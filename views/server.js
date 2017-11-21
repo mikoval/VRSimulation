@@ -5,6 +5,9 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
+app.use(cookieParser());
+app.use(bodyParser());
+app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
 	res.send('hello world');
 })
