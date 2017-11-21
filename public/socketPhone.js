@@ -15,10 +15,10 @@ $(document).ready(function(){
 	});
 
 	//Apply VR stereo rendering to renderer
-	//effect = new THREE.VREffect( renderer );
-	//effect.setSize( window.innerWidth, window.innerHeight );
+	effect = new THREE.VREffect( renderer );
+	effect.setSize( window.innerWidth, window.innerHeight );
 
-	//renderer = effect;
+	renderer = effect;
 })
 
 
