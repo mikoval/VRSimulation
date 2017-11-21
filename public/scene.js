@@ -39,6 +39,7 @@ function initScene(){
 
 	document.body.appendChild( renderer.domElement );
 	var element = renderer.domElement;
+	element.className += "canvas";
 	element.style.width = "100%";
 	element.style.height = "100%";
 
