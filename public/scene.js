@@ -73,12 +73,16 @@ function initScene(){
 	socket =  io(window.location.host);
 
 	if(!mobile){
+
 		controls = new THREE.PointerLockControls( camera );
 		controls.enabled = true;
 		controls.getObject()
 		scene.add( controls.getObject() );
 
 		
+	}
+	else{
+		controls = new THREE.VRControls( camera );
 	}
 	
 
@@ -116,6 +120,7 @@ function animationLoop(){
 
 
 	if(effect){
+		controls.update();
 		effect.render(scene, camera);
 	}
 	else{
