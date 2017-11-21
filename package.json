@@ -4,6 +4,8 @@
 	"dependecies": {
 		"ejs": "^1.0.0",
 		"express": "^4.6.1",
-		"cookie-parser": "~1.0.0"
+		"cookie-parser": "~1.0.0",
+		"express": "^4.16.2"
 	}
+	
 }
