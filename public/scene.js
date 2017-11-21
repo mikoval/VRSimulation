@@ -12,6 +12,11 @@ function initScene(){
 
 
 	renderer = new THREE.WebGLRenderer();
+	
+	renderer.shadowMapEnabled = true;   
+	renderer.shadowMapSoft = true;
+	renderer.shadowMapType = THREE.PCFShadowMap;
+
 
 	camera =
 	    new THREE.PerspectiveCamera(
@@ -51,22 +56,33 @@ function initScene(){
 		sphere.position.x = (rng.next()  - 0.5 )* -1000;
 		sphere.position.y = (rng.next()  ) * 100 + 6;
 		sphere.position.z =(rng.next()  - 0.5 ) * 1000;
-
+		//shading for spheres
+		sphere.castShadow = true;
+		sphere.receiveShadow = true;
 		scene.add(sphere);
 	}
 
 	var planeMat = new THREE.MeshPhongMaterial();
-		var planeGeo = new THREE.PlaneGeometry(1000, 1000,  16,16);
-		var plane = new THREE.Mesh(planeGeo, planeMat);
-		plane.rotation.x = -3.14/2;
-		plane.position.y = -5
+	var planeGeo = new THREE.PlaneGeometry(1000, 1000,  16,16);
+	var plane = new THREE.Mesh(planeGeo, planeMat);
+	plane.rotation.x = -3.14/2;
+	plane.position.y = -5
+	plane.receiveShadow = true;
 	scene.add(plane);
 
 	
+	// mess around with this point light, play with spheres and play with plane 
+	var light = new THREE.PointLight(0xffffff, 1.0, 0);
+	light.position.set( 100, 200, -100 );
+	light.castShadow = true;
 
-	var light = new THREE.PointLight();
-	light.position.set( 100, 60, -100 );
+	light.shadowBias = 0.0001;
+	light.shadowDarkness = 0.2;
+	light.shadowMapWidth = 2048;
+	light.shadowMapHeight = 2048;
+
 	scene.add( light );
+
 
 	var light = new THREE.AmbientLight(0x404040);
 	scene.add( light );
