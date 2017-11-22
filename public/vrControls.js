@@ -26,9 +26,10 @@ var DeviceOrientationController = function ( object, domElement ) {
 	this.deviceOrientation = {};
 	this.screenOrientation = window.orientation || 0;
 
-	this.startAlpha = undefined;
-	this.startGamma = undefined;
-	this.startBeta = undefined;
+	this.startAlpha = 0;
+	this.startGamma = 0;
+	this.startBeta = 0;
+	this.calibrate = true;
 
 	// Manual rotate override components
 	var startX = 0, startY = 0,
@@ -405,15 +406,13 @@ var DeviceOrientationController = function ( object, domElement ) {
 			gamma  = THREE.Math.degToRad( this.deviceOrientation.gamma || 0 ); // Y''
 			orient = THREE.Math.degToRad( this.screenOrientation       || 0 ); // O
 
-			if(this.startAlpha == undefined){
+			if(this.calibrate == true){
 				this.startAlpha = alpha;
-			}
-			if(this.startBeta == undefined){
-				this.startBeta = beta;
-			}
-			if(this.startGamma == undefined){
 				this.startGamma = gamma;
+				this.startBeta = beta;
+				this.calibrate = false;
 			}
+			
 
 			// only process non-zero 3-axis data
 			if ( alpha !== 0 && beta !== 0 && gamma !== 0) {
