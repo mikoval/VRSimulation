@@ -26,6 +26,10 @@ var DeviceOrientationController = function ( object, domElement ) {
 	this.deviceOrientation = {};
 	this.screenOrientation = window.orientation || 0;
 
+	this.startAlpha = undefined;
+	this.startGamma = undefined;
+	this.startBeta = undefined;
+
 	// Manual rotate override components
 	var startX = 0, startY = 0,
 	    currentX = 0, currentY = 0,
@@ -248,7 +252,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 		return function ( alpha, beta, gamma, screenOrientation ) {
 
-			deviceEuler.set( beta, alpha, - gamma, 'YXZ' );
+			deviceEuler.set( beta - this.startBeta, alpha- this.startAlpha, - (gamma- this.startGamma), 'YXZ' );
 
 			finalQuaternion.setFromEuler( deviceEuler );
 
@@ -281,7 +285,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 		return function (alpha, beta, gamma, screenOrientation) {
 
-			deviceEuler.set( beta, alpha, - gamma, 'YXZ' );
+			deviceEuler.set( beta -  this.startBeta, alpha- this.startAlpha, - (gamma- this.startGamma), 'YXZ' );
 
 			finalMatrix.identity();
 
@@ -401,16 +405,26 @@ var DeviceOrientationController = function ( object, domElement ) {
 			gamma  = THREE.Math.degToRad( this.deviceOrientation.gamma || 0 ); // Y''
 			orient = THREE.Math.degToRad( this.screenOrientation       || 0 ); // O
 
+			if(this.startAlpha == undefined){
+				this.startAlpha = alpha;
+			}
+			if(this.startBeta == undefined){
+				this.startBeta = beta;
+			}
+			if(this.startGamma == undefined){
+				this.startGamma = gamma;
+			}
+
 			// only process non-zero 3-axis data
 			if ( alpha !== 0 && beta !== 0 && gamma !== 0) {
 
 				if ( this.useQuaternions ) {
 
-					deviceQuat = createQuaternion( alpha, beta, gamma, orient );
+					deviceQuat = createQuaternion( alpha - this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient );
 
 				} else {
 
-					deviceMatrix = createRotationMatrix( alpha, beta, gamma, orient );
+					deviceMatrix = createRotationMatrix( alpha- this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient );
 
 					deviceQuat.setFromRotationMatrix( deviceMatrix );
 
