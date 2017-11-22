@@ -412,6 +412,12 @@ var DeviceOrientationController = function ( object, domElement ) {
 				this.startGamma = gamma;
 				this.startBeta = beta;
 				
+				prevAlpha = alpha;
+				prevGamma = gamma;
+				prevBeta = beta;
+				totalMovement = 0;
+				count = 0;
+
 
 				this.calibrate = false;
 			}
@@ -422,6 +428,11 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 				if ( this.useQuaternions ) {
 
+					totalMovement += Math.abs(alpha - prevAlpha) + Math.abs(beta-prevBeta ) + Math.abs(gamma - prevGamma );
+					count++;
+					if(count == 100){
+						console.log(totalMovement);
+					}
 					deviceQuat = createQuaternion( 3.14159 / 2 + (alpha - this.startAlpha ) ,  beta, gamma, orient );
 
 					console.log("Alpha: " + alpha + " Beta: " + beta + " Gamma:  " + gamma) ;
@@ -437,6 +448,9 @@ var DeviceOrientationController = function ( object, domElement ) {
 				if ( this.freeze ) return;
 
 				//this.object.quaternion.slerp( deviceQuat, 0.07 ); // smoothing
+				prevAlpha = alpha;
+				prevGamma = gamma;
+				prevBeta = beta;
 				this.object.quaternion.copy( deviceQuat );
 
 			}
