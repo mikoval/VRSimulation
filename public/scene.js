@@ -141,7 +141,8 @@ function animationLoop(){
 
 	if(effect){
 		//console.log(controls);
-		effect.render(scene, camera);
+		//effect.render(scene, camera);
+		renderer.render(scene, camera);
 	}
 	else{
 		renderer.render(scene, camera);
