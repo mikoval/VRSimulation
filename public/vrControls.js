@@ -408,7 +408,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 			orient = THREE.Math.degToRad( this.screenOrientation       || 0 ); // O
 
 			if(this.calibrate == true ){
-				this.startAlpha = alpha;
+				this.startAlpha = alpha ;
 				this.startGamma = gamma;
 				this.startBeta = beta;
 				
@@ -422,7 +422,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 				if ( this.useQuaternions ) {
 
-					deviceQuat = createQuaternion( alpha - this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient - this.startOrient );
+					deviceQuat = createQuaternion( 1.5 + alpha - this.startAlpha, 0.7 + beta- this.startBeta, gamma- this.startGamma, =1.5 + orient - this.startOrient );
 
 					console.log("Alpha: " + alpha + " Beta: " + beta + " Gamma:  " + gamma) ;
 
