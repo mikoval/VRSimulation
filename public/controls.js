@@ -116,6 +116,8 @@ document.addEventListener( 'keyup', onKeyUp, false );
 window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize() {
+	WIDTH = window.innerWidth;
+	HEIGTH = window.innerHeight;
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
