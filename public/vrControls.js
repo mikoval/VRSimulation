@@ -431,16 +431,17 @@ var DeviceOrientationController = function ( object, domElement ) {
 					totalMovement += Math.abs(alpha - prevAlpha) + Math.abs(beta-prevBeta ) + Math.abs(gamma - prevGamma );
 					count++;
 					if(count == 50){
-						if(totalMovement > 20){
-							totalMovement = 0;
-							count = 0;
 
+						if(totalMovement > 20){
+							
 							this.startAlpha = alpha ;
 							this.startGamma = gamma;
 							this.startBeta = beta;
 
 						}
-						
+						totalMovement = 0;
+						count = 0;
+
 					}
 					if(this.startOrient > 0){
 						deviceQuat = createQuaternion( 3.14159 / 2 + (alpha - this.startAlpha ) ,  beta, gamma, orient );
