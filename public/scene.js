@@ -153,10 +153,10 @@ function animationLoop(){
 			console.log(quaternion)
 			if(quaternion != undefined){
 				var quat = new  THREE.Quaternion()
-				console.log(camera.quaternion)
+				//console.log(camera.quaternion)
 				console.log(quaternion);
 				quat.multiplyQuaternions (quaternion, cameraVR.quaternion )
-				console.log(quat);
+				//console.log(quat);
 
 				
 			
