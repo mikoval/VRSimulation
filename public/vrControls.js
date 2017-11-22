@@ -443,7 +443,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 						
 					}
 					if(this.startOrient > 0){
-						
+						deviceQuat = createQuaternion( 3.14159 / 2 + (alpha - this.startAlpha ) ,  beta, gamma, orient );
 					}
 					else {
 						deviceQuat = createQuaternion( -3.14159 / 2 + (alpha - this.startAlpha ) ,  beta, gamma, orient );
