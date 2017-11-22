@@ -432,7 +432,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 					count++;
 					if(count == 50){
 
-						if(totalMovement > 20){
+						if(totalMovement > 50){
 							
 							this.startAlpha = alpha ;
 							this.startGamma = gamma;
