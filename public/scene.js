@@ -8,7 +8,7 @@ function initScene(){
 	const ASPECT = WIDTH / HEIGHT;
 	const NEAR = 0.01;
 	const FAR = 100000;
-
+	controls = undefined;
 
 
 	renderer = new THREE.WebGLRenderer();
@@ -40,8 +40,7 @@ function initScene(){
 
 	// Start the renderer.
 	renderer.setSize(WIDTH, HEIGHT);
-	controls = new DeviceOrientationController( camera, renderer.domElement );
-	controls.connect();
+
 
 	document.body.appendChild( renderer.domElement );
 	var element = renderer.domElement;
@@ -138,11 +137,14 @@ function animationLoop(){
 		controls.getObject().translateZ( velocity.z * delta );
 	}
 	
-	controls.update();
+
 
 	if(effect){
 		//console.log(controls);
 		//effect.render(scene, camera);
+		if(controls != undefined){
+			controls.update();
+		}
 		
 		renderer.render(scene, camera);
 	}
