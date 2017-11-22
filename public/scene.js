@@ -157,7 +157,7 @@ function animationLoop(){
 				quat.multiplyQuaternions (quaternion, cameraVR.quaternion )
 				
 
-				console.log(cameraVR.quaternion);
+				
 			
 				camera.quaternion._x = quat._x;
 				camera.quaternion._y = quat._y;
