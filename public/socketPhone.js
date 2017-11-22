@@ -3,27 +3,29 @@ function socketLoop(){
 	 socket.emit('testMessage', "hi");
 	// setTimeout(socketLoop, 30);
 }
-
+quaternion = new THREE.Quaternion();
 $(document).ready(function(){
 	lastTime = 0;
+	
 	socket.on('testMessage', function(data){
 		var time = data.t;
 	
 		if(time > lastTime){
-			/*
+			
 			camera.position.x  = data.p.x;
 			camera.position.y  = data.p.y;
 			camera.position.z  = data.p.z;
-			camera.quaternion._x = data.q._x;
-			camera.quaternion._y = data.q._y;
-			camera.quaternion._z = data.q._z;
-			camera.quaternion._w = data.q._w;
-			*/
+
+
+			quaternion = new THREE.Quaternion(data.q._x, data.q._y,data.q._z, data.q._w);
+
+			console.log(quaternion);
+			
 			prevTime = time;
 		}
 		
 	});
-	controls = new DeviceOrientationController( camera, renderer.domElement );
+	controls = new DeviceOrientationController( cameraVR, renderer.domElement );
 	controls.connect();
 })
 

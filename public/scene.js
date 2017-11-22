@@ -26,6 +26,13 @@ function initScene(){
 	        FAR
 	    );
 
+	cameraVR = new THREE.PerspectiveCamera(
+	        VIEW_ANGLE,
+	        ASPECT,
+	        NEAR,
+	        FAR
+	    );
+
 	scene = new THREE.Scene();
 	prevTime = performance.now();
 	velocity = new THREE.Vector3();
@@ -143,7 +150,25 @@ function animationLoop(){
 		//console.log(controls);
 		if(controls != undefined){
 			controls.update();
+			console.log(quaternion)
+			if(quaternion != undefined){
+				var quat = new  THREE.Quaternion()
+				console.log(camera.quaternion)
+				console.log(quaternion);
+				quat.multiplyQuaternions (quaternion, cameraVR.quaternion )
+				console.log(quat);
+
+				
+			
+				camera.quaternion._x = quat._x;
+				camera.quaternion._y = quat._y;
+				camera.quaternion._z = quat._z;
+				camera.quaternion._w = quat._w;
+				console.log("using new quat");
+			}
+			
 		}
+
 		effect.render(scene, camera);
 	}
 	else{
