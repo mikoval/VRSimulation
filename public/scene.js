@@ -150,20 +150,20 @@ function animationLoop(){
 		//console.log(controls);
 		if(controls != undefined){
 			controls.update();
-			console.log(quaternion)
+
 			if(quaternion != undefined){
 				var quat = new  THREE.Quaternion()
 				
 				quat.multiplyQuaternions (quaternion, cameraVR.quaternion )
 				
 
-				
+				console.log(cameraVR.quaternion);
 			
 				camera.quaternion._x = quat._x;
 				camera.quaternion._y = quat._y;
 				camera.quaternion._z = quat._z;
 				camera.quaternion._w = quat._w;
-				console.log("using new quat");
+				
 			}
 			
 		}
