@@ -437,6 +437,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 							this.startAlpha = alpha ;
 							this.startGamma = gamma;
 							this.startBeta = beta;
+							this.startOrient = orient;
 
 						}
 						totalMovement = 0;
