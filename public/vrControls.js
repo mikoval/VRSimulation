@@ -422,7 +422,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 				if ( this.useQuaternions ) {
 
-					deviceQuat = createQuaternion(3.1415926 /4 + alpha - this.startAlpha,  beta, -3.1415926 /2 + gamma- this.startGamma, orient - this.startOrient );
+					deviceQuat = createQuaternion(alpha - this.startAlpha,  beta, gamma- this.startGamma, orient - this.startOrient );
 
 					console.log("Alpha: " + alpha + " Beta: " + beta + " Gamma:  " + gamma) ;
 
