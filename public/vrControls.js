@@ -253,7 +253,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 		return function ( alpha, beta, gamma, screenOrientation ) {
 
-			deviceEuler.set( beta - this.startBeta, alpha- this.startAlpha, - (gamma- this.startGamma), 'YXZ' );
+			deviceEuler.set( beta , alpha, - gamma, 'YXZ' );
 
 			finalQuaternion.setFromEuler( deviceEuler );
 
@@ -286,7 +286,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 		return function (alpha, beta, gamma, screenOrientation) {
 
-			deviceEuler.set( beta -  this.startBeta, alpha- this.startAlpha, - (gamma- this.startGamma), 'YXZ' );
+			deviceEuler.set( beta, alpha, - gamma, 'YXZ' );
 
 			finalMatrix.identity();
 
