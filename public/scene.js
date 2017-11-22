@@ -40,7 +40,8 @@ function initScene(){
 
 	// Start the renderer.
 	renderer.setSize(WIDTH, HEIGHT);
-
+	controls = new DeviceOrientationController( camera, renderer.domElement );
+	controls.connect();
 
 	document.body.appendChild( renderer.domElement );
 	var element = renderer.domElement;
@@ -137,11 +138,12 @@ function animationLoop(){
 		controls.getObject().translateZ( velocity.z * delta );
 	}
 	
-
+	controls.update();
 
 	if(effect){
 		//console.log(controls);
 		//effect.render(scene, camera);
+		
 		renderer.render(scene, camera);
 	}
 	else{

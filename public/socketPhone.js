@@ -23,8 +23,7 @@ $(document).ready(function(){
 		}
 		
 	});
-	controls = new DeviceOrientationController( camera, renderer.domElement );
-	controls.connect();
+	
 })
 
 
