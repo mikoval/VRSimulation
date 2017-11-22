@@ -26,10 +26,6 @@ var DeviceOrientationController = function ( object, domElement ) {
 	this.deviceOrientation = {};
 	this.screenOrientation = window.orientation || 0;
 
-	this.startAlpha = undefined;
-	this.startGamma = undefined;
-	this.startBeta = undefined;
-
 	// Manual rotate override components
 	var startX = 0, startY = 0,
 	    currentX = 0, currentY = 0,
@@ -252,7 +248,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 		return function ( alpha, beta, gamma, screenOrientation ) {
 
-			deviceEuler.set( beta - this.startBeta, alpha- this.startAlpha, - (gamma- this.startGamma), 'YXZ' );
+			deviceEuler.set( beta, alpha, - gamma, 'YXZ' );
 
 			finalQuaternion.setFromEuler( deviceEuler );
 
@@ -285,7 +281,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 		return function (alpha, beta, gamma, screenOrientation) {
 
-			deviceEuler.set( beta -  this.startBeta, alpha- this.startAlpha, - (gamma- this.startGamma), 'YXZ' );
+			deviceEuler.set( beta, alpha, - gamma, 'YXZ' );
 
 			finalMatrix.identity();
 
@@ -410,11 +406,11 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 				if ( this.useQuaternions ) {
 
-					deviceQuat = createQuaternion( alpha - this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient );
+					deviceQuat = createQuaternion( alpha, beta, gamma, orient );
 
 				} else {
 
-					deviceMatrix = createRotationMatrix( alpha- this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient );
+					deviceMatrix = createRotationMatrix( alpha, beta, gamma, orient );
 
 					deviceQuat.setFromRotationMatrix( deviceMatrix );
 
