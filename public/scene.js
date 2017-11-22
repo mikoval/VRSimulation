@@ -141,12 +141,10 @@ function animationLoop(){
 
 	if(effect){
 		//console.log(controls);
-		//effect.render(scene, camera);
 		if(controls != undefined){
 			controls.update();
 		}
-		
-		renderer.render(scene, camera);
+		effect.render(scene, camera);
 	}
 	else{
 		renderer.render(scene, camera);
