@@ -411,7 +411,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 				this.startAlpha = alpha ;
 				this.startGamma = gamma;
 				this.startBeta = beta;
-				alert(orient);
+				this.startOrient = orient;
 				prevAlpha = alpha;
 				prevGamma = gamma;
 				prevBeta = beta;
@@ -442,7 +442,13 @@ var DeviceOrientationController = function ( object, domElement ) {
 						}
 						
 					}
-					deviceQuat = createQuaternion( 3.14159 / 2 + (alpha - this.startAlpha ) ,  beta, gamma, orient );
+					if(this.startOrient > 0){
+						
+					}
+					else {
+						deviceQuat = createQuaternion( -3.14159 / 2 + (alpha - this.startAlpha ) ,  beta, gamma, orient );
+					}
+					
 
 
 				} else {
