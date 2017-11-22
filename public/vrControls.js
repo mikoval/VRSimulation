@@ -407,7 +407,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 			gamma  = THREE.Math.degToRad( this.deviceOrientation.gamma || 0 ); // Y''
 			orient = THREE.Math.degToRad( this.screenOrientation       || 0 ); // O
 
-			if(this.calibrate == true || true){
+			if(this.calibrate == true ){
 				this.startAlpha = alpha;
 				this.startGamma = gamma;
 				this.startBeta = beta;
