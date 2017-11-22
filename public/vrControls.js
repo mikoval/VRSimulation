@@ -29,6 +29,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 	this.startAlpha = 0;
 	this.startGamma = 0;
 	this.startBeta = 0;
+	this.startOrient = 0;
 	this.calibrate = true;
 
 	// Manual rotate override components
@@ -410,6 +411,8 @@ var DeviceOrientationController = function ( object, domElement ) {
 				this.startAlpha = alpha;
 				this.startGamma = gamma;
 				this.startBeta = beta;
+				this.startOrient = orient;
+
 				this.calibrate = false;
 			}
 			
@@ -419,7 +422,7 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 				if ( this.useQuaternions ) {
 
-					deviceQuat = createQuaternion( alpha - this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient );
+					deviceQuat = createQuaternion( alpha - this.startAlpha, beta- this.startBeta, gamma- this.startGamma, orient - this.startOrient );
 
 					console.log(deviceQuat);
 
