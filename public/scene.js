@@ -84,9 +84,9 @@ function initScene(){
 	light.castShadow = true;
 
 	light.shadowBias = 0.0001;
-	//light.shadowDarkness = 0.2;
-	//light.shadowMapWidth = 2048;
-	//light.shadowMapHeight = 2048;
+	light.shadowDarkness = 0.2;
+	light.shadowMapWidth = 2048;
+	light.shadowMapHeight = 2048;
 
 	scene.add( light );
 
